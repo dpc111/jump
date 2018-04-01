@@ -39,8 +39,10 @@ public class PersonControl : MonoBehaviour
         //float v = CrossPlatformInputManager.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        bool j = Input.GetButtonDown("Jump");
-        Debug.Log(h + " " + v);
+        //bool j = Input.GetButtonDown("Jump");
+        float j = InputMgr.JumpPower;
+        InputMgr.JumpPower = 0f;
+
         if (mCam != null)
         {
             mCamForward = Vector3.Scale(mCam.forward, new Vector3(1, 0, 1)).normalized;

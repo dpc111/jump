@@ -26,16 +26,16 @@ public class PersonCharacter : MonoBehaviour
     }
 
 
-    public void Move(Vector3 move, bool jump)
+    public void Move(Vector3 move, float jumpPower)
     {
         if (move.magnitude > 1f)
         {
             move.Normalize();
         }
         transform.Translate(move * 0.1f);
-        if (jump)
+        if ( mRigidbody.velocity.y < 0.01 &&  mRigidbody.velocity.y > -0.01 && jumpPower > 0.01f)
         {
-            mRigidbody.velocity += new Vector3(0, 5, 1);
+            mRigidbody.velocity += new Vector3(0, jumpPower * 20, 1);
         }
     }
 

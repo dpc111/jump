@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class InputMgr : MonoBehaviour {
 	// Use this for initialization
-    public int JumpBeginTime = 0;
-    public int JumpPower = 0;
+    public static float JumpBeginTime = 0;
+    public static float JumpPower = 0;
 	void Start () {
 		
 	}
@@ -14,11 +14,13 @@ public class InputMgr : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Jump")) 
         {
-
+            JumpBeginTime = Time.time;
+            Debug.LogError(JumpBeginTime);
         }
         if (Input.GetButtonUp("Jump")) 
         {
-
+            JumpPower = Time.time - JumpBeginTime;
+            Debug.LogError(JumpPower);
         }
 	}
 }
